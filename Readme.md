@@ -1,6 +1,6 @@
-## onepo
+## SingleStack
 
-`onepo` 是一个基于 Docker Compose 的一站式解决方案，帮助你快速部署常见的中间件和数据库服务。通过简单的配置和一键启动，你可以在本地或服务器上轻松运行这些服务。
+`SingleStack` 是一个基于 Docker Compose 的一站式解决方案，帮助你快速部署常见的中间件和数据库服务。通过简单的配置和一键启动，你可以在本地或服务器上轻松运行这些服务。
 
 
 
@@ -9,8 +9,8 @@
 #### 1. 克隆项目并进入目录
 
 ```bash
-git clone https://github.com/FreemanKevin/onepo.git
-cd onepo
+git clone https://github.com/FreemanKevin/SingleStack.git
+cd SingleStack
 ```
 
 #### 2. 准备镜像文件
