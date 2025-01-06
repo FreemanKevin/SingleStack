@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Define the plugins directory
+PLUGIN_DIR="/data/opt/installmiddleware/plugins"
+
+# Check if the plugins directory exists
+if [[ ! -d "$PLUGIN_DIR" ]]; then
+    echo "Plugins directory does not exist: $PLUGIN_DIR"
+    exit 1
+fi
+
+# Change to the plugins directory
+cd "$PLUGIN_DIR" || exit
+
+# Check if there are any .zip files in the directory
+zip_files=( *.zip )
+if [[ ${#zip_files[@]} -eq 1 && ${zip_files[0]} == "*.zip" ]]; then
+    echo "No zip files found in the plugins directory."
+    echo "Please ensure that plugin zip files have been uploaded to: $PLUGIN_DIR"
+    exit 1
+fi
+
+# Iterate through all zip files in the directory
+for zip_file in *.zip; do
+    # Extract the base name and version number
+    if [[ $zip_file =~ ^(.*)-([0-9]+\.[0-9]+\.[0-9]+)\.zip$ ]]; then
+        base_name="${BASH_REMATCH[1]}"
+        version="${BASH_REMATCH[2]}"
+        target_dir="${base_name}-${version}"
+
+        # Create the target directory and unzip the file
+        echo "Unzipping $zip_file into directory $target_dir..."
+        mkdir -p "$target_dir"
+        unzip -o "$zip_file" -d "$target_dir"
+
+        echo "Successfully unzipped $zip_file into $target_dir"
+
+        # Delete the .zip file after extraction
+        echo "Deleting the zip file $zip_file..."
+        rm -f "$zip_file"
+    else
+        echo "Skipping file that does not match naming convention: $zip_file"
+    fi
+done
+

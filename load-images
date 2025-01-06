@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# ANSI color codes
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+# 设置当前目录下的 images 子目录为镜像文件存放路径
+IMAGE_DIR="./images"
+
+# 检查 images 目录是否存在
+if [ ! -d "$IMAGE_DIR" ]; then
+    echo -e "${RED}Error: Directory $IMAGE_DIR does not exist.${NC}"
+    exit 1
+fi
+
+# 遍历 images 目录下的所有 .tar 和 .tar.gz 文件
+echo "Starting to load Docker images from $IMAGE_DIR..."
+for image_file in "$IMAGE_DIR"/*.{tar,tar.gz}; do
+    # 检查文件是否存在，防止 "No such file" 错误
+    if [ -f "$image_file" ]; then
+        echo "Loading image from $image_file..."
+        docker load -i "$image_file"
+        if [ $? -eq 0 ]; then
+            echo -e "${GREEN}Successfully loaded $image_file${NC}"
+        else
+            echo -e "${RED}Failed to load $image_file${NC}"
+        fi
+    fi
+done
+echo "All images have been processed."

@@ -1,0 +1,10 @@
+#/bin/bash
+
+# update dir permissions
+chmod -R 775 /data/opt/installmiddleware/plugins 
+mkdir -p /data/elastic/{data,logs,snapshots}
+chmod -R 775 /data/elastic 
+
+# update sysconf
+awk -i inplace '!/^$/ && !/^#/{ if ($1 == "vm.max_map_count") found=1 } {print} END { if (!found) print "vm.max_map_count = 262144" }' /etc/sysctl.conf
+sysctl -p
