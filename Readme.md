@@ -9,7 +9,7 @@
 #### 1. 克隆项目并进入目录
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/FreemanKevin/onepo.git
 cd onepo
 ```
 
