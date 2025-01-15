@@ -16,9 +16,6 @@ A comprehensive Docker Compose solution for rapid deployment of middleware and d
 ## Quick Start
 
 ```bash
-git clone https://github.com/FreemanKevin/SingleStack.git
-cd SingleStack
-
 chmod +x load-images
 ./load-images
 
