@@ -4,14 +4,14 @@ A comprehensive Docker Compose solution for rapid deployment of middleware and d
 
 ## Supported Services
 
-- Nginx (Reverse Proxy)
-- Minio (Object Storage)
-- Nacos (Service Discovery)
-- Redis (Cache)
-- RabbitMQ (Message Queue)
-- PostgreSQL (Database)
-- Elasticsearch (Search Engine)
-- Geoserver (GIS)
+- Nginx
+- Minio 
+- Nacos
+- Redis
+- RabbitMQ 
+- PostgreSQL
+- Elasticsearch 
+- Geoserver
 
 ## Quick Start
 
