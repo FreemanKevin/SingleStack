@@ -1,4 +1,4 @@
-# SingleDocker
+# DockerSingle
 
 A comprehensive Docker Compose solution for rapid deployment of middleware and database services.
 
